@@ -52,3 +52,8 @@ def peliculas_por_actor(datos, año_inicial = None, año_final = None):
         if(año_inicial is None or i.fecha_estreno.year >= año_inicial) and (año_final is None or i.fecha_estreno.year <= año_final):
             res.update(i.reparto)
     return res
+
+def actores_mas_frecuentes(datos,n,año_inicial = None,año_final = None):
+    counter = peliculas_por_actor(datos,año_inicial,año_final)
+    mas_frecuentes = sorted(counter.items(), key = lambda t:t[1], reverse = True)[:n]
+    return sorted(actor for actor, _ in mas_frecuentes)
