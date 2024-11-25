@@ -1,5 +1,5 @@
 import csv
-from collections import namedtuple
+from collections import namedtuple, defaultdict, Counter
 from datetime import *
 
 Pelicula = namedtuple("Pelicula","fecha_estreno,titulo,director,generos,duracion,presupuesto,recaudacion,reparto")
@@ -35,4 +35,20 @@ def pelicula_mas_ganancias(datos,genero="None"):
                     max_ganancia = i.recaudacion
                     max_titulo = i.titulo
     return((max_titulo,max_ganancia))
-    
+
+def media_presupuesto_por_genero(datos):
+    aux = defaultdict(list)
+    for p in datos:
+        for genero in p.generos:
+            aux[genero].append(p.presupuesto)
+    res = dict()
+    for genero,presupuestos in aux.items():
+        res[genero] = sum(presupuestos)/len(presupuestos)
+    return res
+
+def peliculas_por_actor(datos, año_inicial = None, año_final = None):
+    res = Counter()
+    for i in datos:
+        if(año_inicial is None or i.fecha_estreno.year >= año_inicial) and (año_final is None or i.fecha_estreno.year <= año_final):
+            res.update(i.reparto)
+    return res
