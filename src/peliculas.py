@@ -57,3 +57,11 @@ def actores_mas_frecuentes(datos,n,año_inicial = None,año_final = None):
     counter = peliculas_por_actor(datos,año_inicial,año_final)
     mas_frecuentes = sorted(counter.items(), key = lambda t:t[1], reverse = True)[:n]
     return sorted(actor for actor, _ in mas_frecuentes)
+
+# def recaudacion_total_por_año(datos,generos=None):
+#     res = dict()
+#     if generos == None:
+#         for i in datos:
+#             if str(i.fecha_estreno.year()) not in res:
+#                 res[str(i.fecha_estreno.year())] += i.recaudacion
+#     return res

@@ -6,4 +6,5 @@ if __name__ == "__main__":
     #print(pelicula_mas_ganancias(datos,"Drama"))
     #print(media_presupuesto_por_genero(datos))
     #print(peliculas_por_actor(datos, 2015, 2024))
-    print(actores_mas_frecuentes(datos,3,2015,2024))
+    #print(actores_mas_frecuentes(datos,3,2015,2024))
+    #print(recaudacion_total_por_año(datos))
